@@ -19,7 +19,7 @@ node{
   stage('Run Container'){
     def dockerRun ='docker run -p 8082:80 -d --name ${dockerContainerName} ${dockerImageName}'
     sshagent(['400939f3-d17a-43c3-8e2e-7cc98bdb1253']) {
-      sh 'ssh -tt StrictHostKeyChecking=no ubuntu@172.31.15.226 ${dockerRun}'
+      sh 'ssh -tt StrictHostKeyChecking=no ubuntu@108.136.232.253 ${dockerRun}'
     }
   }  
 }
