@@ -1,7 +1,7 @@
 node{
   def dockerImageName='htmltest:$BUILD_NUMBER'
   def dockerContainerName='simplehtml_$BUILD_NUMBER'
-  def dockerRun ='docker run -p 8082:80 -d --name ${dockerContainerName} ${dockerImageName}'
+  
   //def dockerPrevImage=''
   
   stage('SCM'){
@@ -18,7 +18,7 @@ node{
   }
   
   stage('Run Container'){
-    sh "${dockerRun}"
+    sh "docker run -p 8082:80 -d --name ${dockerContainerName} ${dockerImageName}"
   }
 }
 
