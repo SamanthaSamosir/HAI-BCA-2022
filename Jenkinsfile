@@ -1,6 +1,6 @@
 node{
-  def dockerImageName='htmltest:$currentBuild'
-  def dockerContainerName='simplehtml_$currentBuild'
+  def dockerImageName='htmltest:$BUILD_NUMBER'
+  def dockerContainerName='simplehtml_$BUILD_NUMBER'
   //def dockerPrevImage=''
   
   stage('SCM Checkout'){
