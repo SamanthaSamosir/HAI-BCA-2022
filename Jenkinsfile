@@ -8,10 +8,9 @@ node{
   }
   
   stage('Publish Docker Image'){
-   sh "docker login"
+    sh "docker login"
     sh "{${DOCKERHUB_USERNAME}=${samanthams}}"
     sh "{${DOCKERHUB_TOKEN}=${c2b9211d-76b3-4a02-822a-b5281de36907}}"
-    }
     sh "docker push ${dockerImageName}"
   }
   stage('Run Docker Image'){
