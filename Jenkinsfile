@@ -10,6 +10,8 @@ node{
   }
   
   stage('Run Docker Image'){
+      sh "sudo chmod +x stopscript.sh"
+      sh "sudo ./stopscript.sh"
       sh "docker run -p 8082:8080 -d --name ${dockerContainerName} ${dockerImageName}"
       }  
 }
