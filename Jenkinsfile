@@ -6,7 +6,9 @@ node{
     git 'https://github.com/SamanthaMeliora/HTMLtest.git'
   }
   
-
+  stage('Stop Active Container'){
+    sh "docker stop ${dockerContainerName}"
+  }
   
   stage('Build Docker Image'){
     sh "docker build -t ${dockerImageName} ."
