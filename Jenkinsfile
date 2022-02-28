@@ -1,5 +1,5 @@
 node{
-  def dockerImageName='htmltest_$currentBuild'
+  def dockerImageName='htmltest:$currentBuild'
   def dockerContainerName='simplehtml_$currentBuild'
   //def dockerPrevImage=''
   
