@@ -10,7 +10,7 @@ node{
   }
   
   stage('Run Docker Image'){
-    def Running_Container=${docker ps -a -q}
+    def Running_Container='${docker ps -a -q}'
       sh "docker stop ${Running_Container}"
       sh "docker run -p 8082:8080 -d --name ${dockerContainerName} ${dockerImageName}"
       }  
