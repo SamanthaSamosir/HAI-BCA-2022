@@ -1,7 +1,7 @@
 node{
   def dockerImageName='htmltest:$BUILD_NUMBER'
   def dockerContainerName='simplehtml_$BUILD_NUMBER'
-  def dockerPreviousContainer='simplehtml_($BUILD_NUMBER=$BUILD_NUMBER-1)'
+  def dockerPreviousContainer='simplehtml_$BUILD_NUMBER=$BUILD_NUMBER-1'
   
   //def dockerPrevImage=''
   
