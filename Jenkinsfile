@@ -8,11 +8,11 @@ node{
   }
   
   stage('Stop Active Container'){
-    sh "docker stop ${dockerContainerName}"
+    sh "docker stop ${dockerPrevName}"
   }
   
   stage('Build Docker Image'){
-    sh "docker build -t ${dockerPrevName} ."
+    sh "docker build -t ${dockerImageName} ."
   }
   
   stage('Run Docker Image'){
