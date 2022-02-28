@@ -1,6 +1,7 @@
 node{
   def dockerImageName='htmltest:$BUILD_NUMBER'
   def dockerContainerName='simplehtml_$BUILD_NUMBER'
+  def dockerRun ='docker run -p 8082:80 -d --name ${dockerContainerName} ${dockerImageName}'
   //def dockerPrevImage=''
   
   stage('SCM'){
@@ -17,10 +18,11 @@ node{
   }
   
   stage('Run Container'){
-    def dockerRun ='docker run -p 8082:80 -d --name ${dockerContainerName} ${dockerImageName}'
-    //sshagent(['dev-server']) {
+    sh "${dockerRun}"
+  }
+}
+
+  //sshagent(['dev-server']) {
       //sh 'ssh -o StrictHostKeyChecking=no ec2-user@172.31.15.226 ${dockerRun}'
     //}
   //} 
-    sh "${dockerRun}"
-}
