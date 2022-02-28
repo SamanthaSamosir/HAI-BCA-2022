@@ -1,7 +1,7 @@
 node{
   def dockerImageName='samanthams/htmltest_$JOB_NAME:$BUILD_NUMBER'
   stage('SCM Checkout'){
-    git 'git@github.com:SamanthaMeliora/HTMLtest.git'
+    git 'https://github.com/SamanthaMeliora/HTMLtest.git'
   }
   stage('Build Docker Image'){
     sh "docker build -t ${dockerImageName} ."
