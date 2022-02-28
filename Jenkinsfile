@@ -1,6 +1,7 @@
 node{
-  def dockerImageName='samanthams/htmltest_$JOB_NAME:$BUILD_NUMBER'
-  def dockerContainerName='simplehtml_$BUILD_NUMBER'
+  def dockerImageName='samanthams/htmltest_$JOB_NAME:$currentBuild'
+  def dockerContainerName='simplehtml_$currentBuild'
+  def dockerPrevName='simplehtml_$previousBuild'
   
   stage('SCM Checkout'){
     git 'https://github.com/SamanthaMeliora/HTMLtest.git'
@@ -11,7 +12,7 @@ node{
   }
   
   stage('Build Docker Image'){
-    sh "docker build -t ${dockerImageName} ."
+    sh "docker build -t ${dockerPrevName} ."
   }
   
   stage('Run Docker Image'){
