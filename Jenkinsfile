@@ -8,8 +8,9 @@ node{
   }
   
   stage('Publish Docker Image'){
-    withCredentials([string(credentialsID: 'dockerpwd', variable: 'dockerPWD')]){
-      sh "docker login -u samanthams -p ${dockerPWD}"
+   sh "docker login"
+    sh "{${DOCKERHUB_USERNAME}=${samanthams}}"
+    sh "{${DOCKERHUB_TOKEN}=${c2b9211d-76b3-4a02-822a-b5281de36907}}"
     }
     sh "docker push ${dockerImageName}"
   }
