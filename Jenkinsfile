@@ -8,6 +8,6 @@ node{
   }
   
   stage('Run Docker Image'){
-      sh "docker run -p 8082:8080 -d --name ${dockerContainerName} ${dockerImageName}"
+      sh "docker run -p 8082:8080 -d --name simplehtml ${dockerImageName}"
       }  
 }
