@@ -1,9 +1,9 @@
 node{
-  def dockerImageName='htmltest_$BUILD_NUMBER:$BUILD_NUMBER'
+  def dockerImageName='htmltest:$BUILD_NUMBER'
   def dockerContainerName='simplehtml_$BUILD_NUMBER'
   //def dockerPrevImage=''
   
-  stage('SCM Checkout'){
+  stage('SCM'){
     //pull from this repo bitj
     git 'https://github.com/SamanthaMeliora/HTMLtest.git'
   }
