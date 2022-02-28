@@ -18,6 +18,6 @@ node{
   
   stage('Run Docker Image'){
       //sh "systemctl enable nginx"
-      sh "docker run -p 8082:8080 -d --name ${dockerContainerName} ${dockerImageName}"
+      sh "docker run -p 8082:80 -d --name ${dockerContainerName} ${dockerImageName}"
       }  
 }
