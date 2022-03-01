@@ -1,7 +1,7 @@
 node{
   def dockerImageName='htmltest:$BUILD_NUMBER'
   def dockerContainerName='simplehtml_$BUILD_NUMBER'
-  def dockerPreviousContainer='simplehtml_$51'
+  //def dockerPreviousContainer='simplehtml_$51'
   
   //def dockerPrevImage=''
   
@@ -19,7 +19,7 @@ node{
   }
   
   stage('Run Container'){
-    sh "docker stop ${dockerPreviousContainer}"
+    //sh "docker stop ${dockerPreviousContainer}"
     sh "docker run -p 8082:80 -d --name ${dockerContainerName} ${dockerImageName}"
   }
 }
