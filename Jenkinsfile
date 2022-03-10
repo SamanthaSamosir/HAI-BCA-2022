@@ -1,18 +1,16 @@
 node{
-  def dockerImageName='htmltest:$BUILD_NUMBER'
+  def dockerImageName='test:$BUILD_NUMBER'
   def dockerContainerName='simplehtml_$BUILD_NUMBER'
-  //def dockerPreviousContainer='simplehtml_$51'
   
-  //def dockerPrevImage=''
+  //stage(){
+    //sh"docker stop " 
+  //}
   
   stage('SCM'){
     //pull from this repo bitj
     git 'https://github.com/SamanthaMeliora/HTMLtest.git'
   }
   
- // stage('Pull the newest Image'){
-   // sh ""
-   //}
   
   stage('Build Docker Image'){
     sh "docker build -t ${dockerImageName} ."
