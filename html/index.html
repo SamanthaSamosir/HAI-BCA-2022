@@ -3,47 +3,45 @@
   <head>
     <meta charset="utf-8">
     <meta name="generator" content="GitLab Pages">
-    <title>Hackathon in BCA</title>
+    <title>Sticky Notes | MP 032</title>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <header>
-      <a href="#" class="logo">Logo</a>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </header>
+    <div class="title">
+      <h1>Sticky Notes</h1>
+      <p>make your life easier</p>
+  </div>
+  <div class="form">
+    <form action="javascript:void(0);" method="POST" onsubmit="app.Add()"> 
+    <input type="text" id="add-todo" placeholder="Thing To-Do">
+    <input type="submit" value="Add" class="btn btn-primary">
+    </form>
+    <p>You Have: </p>
+    <p id="counter"></p>
+
+    <table>
+    <tr class="to-do">
+        <th><h3>To-Do:</h3></th>
+    </tr>
+        <tbody id="tasks">
+        </tbody>
+    </table>
+</div>
+    <div id="edit-box" role="aria-hidden">
+      <form action="javascript:void(0);" method="POST" id="save-edit">
+        <input type="text" id="edit-todo">
+        <input type="submit" value="Save" class="btn btn-success"/> <a onclick="CloseInput()" aria-label="Close">&#10006;</a>
+      </form>
+    </div>
+    
+
     <section>
       <img src="stars.png" id="stars">
       <img src="moon.png" id="moon">
       <img src="mountains_behind.png" id="mountains_behind">
-      <h2 id="text">Hackathon 2022!</h2>
        <img src="mountains_front.png" id="mountains_front">
      </section>
-     <div class="sec" id="sec">
-      
-     </div>
-     <script>
-      let stars = document.getElementById('stars');
-      let moon = document.getElementById('moon');
-      let mountains_behind = document.getElementById('mountains_behind');
-      let text = document.getElementById('text');
-      let btn = document.getElementById('btn');
-      let mountains_front = document.getElementById('mountains_front');
-      let header = document.getElementById('header');
-
-            window.addEventlistener('scroll', function(){
-            let value= window.scrollY;
-            stars.style.left = value * 0.25 + 'px';
-            moon.style.top = value *  1.05 + 'px';
-            mountains_behind.style.top = value * 05 + 'px';
-            mountains_front.style.top = value * 0 + 'px';
-            text.style.marginRight = value * 4 + 'px';
-            text.style.marginLeft = value * 1.5 + 'px';
-            btn.style.marginTop = value * 1.5 + 'px';
-            header.style.top = value * 0.5 + 'px';
-          })
-     </script>
+     
+     <script src="script.js"></script>
   </body>
 </html>
