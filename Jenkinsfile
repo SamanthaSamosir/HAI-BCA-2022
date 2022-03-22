@@ -13,11 +13,11 @@ node{
   stage('SCM'){
     //pull from this repo bitj
 //     git 'https://github.com/SamanthaMeliora/HTMLtest.git'
-    def exists = fileExists 'src'
-   if (!exists){
-       new File('src').mkdir()
-   }
-   dir ('src') {
+//     def exists = fileExists 'src'
+//    if (!exists){
+//        new File('src').mkdir()
+//    }
+//    dir ('src') {
       try {
           echo 'checkout from git'
           git url: 'https://github.com/SamanthaMeliora/HTMLtest.git', branch: 'master'
@@ -26,7 +26,7 @@ node{
 //         step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
         throw err
       }
-    }
+//     }
   }
   
   
