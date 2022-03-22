@@ -32,7 +32,7 @@ node{
   
   stage('Build Docker Image'){
 //     sh "docker build -t ${dockerImageName} ."
-	dir ('src') {
+// 	dir ('src') {
 		 try {  
          sh "docker build -t ${dockerImageName} ."
        } catch (err) {
@@ -43,7 +43,7 @@ node{
         sh 'exit 1'
       }     
      }     
-    }
+//     }
   }
   
   stage('Run Container'){
