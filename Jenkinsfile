@@ -34,7 +34,7 @@ node{
 //     sh "docker build -t ${dockerImageName} ."
 	dir ('src') {
 		 try {  
-         sh "docker build -t ${dockerImageName} .
+         sh "docker build -t ${dockerImageName} ."
        } catch (err) {
         echo err.getMessage()
         withCredentials(([string(credentialsId: 'telegramToken', variable: 'TOKEN'),
