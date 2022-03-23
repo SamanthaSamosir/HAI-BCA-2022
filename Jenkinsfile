@@ -1,5 +1,4 @@
 node{
-	//timeout(time: 10)
 	def dockerImageName='test:$BUILD_NUMBER'
   	def dockerContainerName='simplehtml_$BUILD_NUMBER'
   	withCredentials(
@@ -18,7 +17,6 @@ node{
   	}
  
 	stage('Deploy'){
-		
 		try {
 			sh "docker build -t ${dockerImageName} ."
 			sh "docker run -itd --name ${dockerContainerName} -p 80 ${dockerImageName}"
@@ -35,6 +33,6 @@ node{
 			([string(credentialsId: 'telegramToken', variable: 'TOKEN'),
       			string(credentialsId: 'telegramChatId', variable: 'CHAT_ID')])) {
       				sh 'curl -s -X POST https://api.telegram.org/bot${TOKEN}/sendMessage -d "chat_id=${CHAT_ID}"  -d text="[✅] Build successfully 😊"'
-  			} 
+  		} 
   	}
 }
