@@ -10,8 +10,8 @@ node{
   
 	stage('SCM'){
 		try {
-			echo 'checkout from git'
-			git url: 'https://github.com/SamanthaMeliora/HTMLtest.git', branch: 'master'
+		echo 'checkout from git'
+		git url: 'https://github.com/SamanthaMeliora/HTMLtest.git', branch: 'master'
 		} catch(err) {
 			throw err
 		}
@@ -24,7 +24,7 @@ node{
 		sh "docker build -t ${dockerImageName} ."    
 	}
 	options{
-		timeout(time:2, unit: "Minutes")
+		timeout(time:2, unit: "Minutes")}
   
 	stage('Run Container'){
 		try {
@@ -44,6 +44,6 @@ node{
 				sh 'curl -s -X POST https://api.telegram.org/bot${TOKEN}/sendMessage -d "chat_id=${CHAT_ID}"  -d text="[✅] Build successfully 😊"'
 			}
 		options{
-		timeout(time:2, unit: "Minutes")
+			timeout(time:2, unit: "Minutes")}
 	}
 }
