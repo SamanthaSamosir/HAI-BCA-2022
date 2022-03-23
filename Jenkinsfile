@@ -1,4 +1,8 @@
 node{
+		
+	options{
+		timeout(time: 7, unit: "MINUTES")
+		}
 	def dockerImageName='test:$BUILD_NUMBER'
   	def dockerContainerName='simplehtml_$BUILD_NUMBER'
   	withCredentials(
@@ -17,10 +21,6 @@ node{
   	}
  
 	stage('Deploy'){
-		
-	options{
-		timeout(time: 3, unit: "MINUTES")
-		}
 		
 		try {
 			sh "docker build -t ${dockerImageName} ."
