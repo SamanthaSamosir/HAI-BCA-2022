@@ -1,6 +1,9 @@
 node{
 	def dockerImageName='test:$BUILD_NUMBER'
 	def dockerContainerName='simplehtml_$BUILD_NUMBER'
+	def errMsg='Jenkins failed to build'
+	echo errMsg
+
 	withCredentials(
  		([string(credentialsId: 'telegramToken', variable: 'TOKEN'),
 		string(credentialsId: 'telegramChatId', variable: 'CHAT_ID')])) {
@@ -20,7 +23,7 @@ node{
 		try {  
 			sh "docker build -t ${dockerImageName} ."
 		} catch (err) {
-			echo err.getMessage()
+			echo errMsg()
 			withCredentials(
 				([string(credentialsId: 'telegramToken', variable: 'TOKEN'),
 				string(credentialsId: 'telegramChatId', variable: 'CHAT_ID')])) {
@@ -34,11 +37,11 @@ node{
 		try {
 			sh "docker run -p 8083:80 -d --name ${dockerContainerName} ${dockerImageName}"    
 		} catch (err) {
-			echo err.getMessage()
+			echo errMsg()
 			withCredentials(
 				([string(credentialsId: 'telegramToken', variable: 'TOKEN'),
 				string(credentialsId: 'telegramChatId', variable: 'CHAT_ID')])) {
-					sh 'curl -s -X POST https://api.telegram.org/bot${TOKEN}/sendMessage -d "chat_id=${CHAT_ID}"  -d text="[❌] Failed to build 😱"'
+					sh 'curl -s -X POST https://api.telegram.org/bot${TOKEN}/sendMessage -d "chat_id=${CHAT_ID}"  -d text=${errMsg}'
 					sh 'exit 1'
 			}     
 		}   
