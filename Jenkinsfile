@@ -1,5 +1,5 @@
 node{
-	timeout(time: 10)
+	//timeout(time: 10)
 	def dockerImageName='test:$BUILD_NUMBER'
   	def dockerContainerName='simplehtml_$BUILD_NUMBER'
   	withCredentials(
