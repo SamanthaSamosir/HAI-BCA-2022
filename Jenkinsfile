@@ -34,7 +34,7 @@ node{
   
 	stage('Run Container'){
 		try {
-			sh "docker run -itd --name ${dockerContainerName} -p 80 ${dockerImageName}"    
+			sh "docker run -itd --name ${dockerContainerNam} -p 80 ${dockerImageName}"    
 // 			sh "docker run -p 8083:80 -d --name ${dockerContainerName} ${dockerImageName}"
 		} catch (err) {
 			echo err.getMessage()
