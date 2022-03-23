@@ -18,24 +18,12 @@ node{
     	}
   
 	stage('Build Docker Image'){
-		sh "docker build -t ${dockerImageName} ."
-// 		try {  
-// 			sh "docker build -t ${dockerImageName} ."
-// 		} catch (err) {
-// 			echo err.getMessage()
-// 			withCredentials(
-// 				([string(credentialsId: 'telegramToken', variable: 'TOKEN'),
-// 				string(credentialsId: 'telegramChatId', variable: 'CHAT_ID')])) {
-// 					sh 'curl -s -X POST https://api.telegram.org/bot${TOKEN}/sendMessage -d "chat_id=${CHAT_ID}"  -d text="[❌] Failed to build 😱"'
-// 					sh 'exit 1'
-// 			}     
-// 		}     
+		sh "docker build -t ${dockerImageName} ."    
 	}
   
 	stage('Run Container'){
 		try {
 			sh "docker run -itd --name ${dockerContainerNam} -p 80 ${dockerImageName}"    
-// 			sh "docker run -p 8083:80 -d --name ${dockerContainerName} ${dockerImageName}"
 		} catch (err) {
 			echo err.getMessage()
 			withCredentials(
