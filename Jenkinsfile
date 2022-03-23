@@ -15,13 +15,10 @@ node{
 	        	throw err
       		}
   	}
-  
-	stage('Build Docker Image'){ 
-		sh "docker build -t ${dockerImageName} ."
-  	}
-  
-	stage('Run Container'){
+ 
+	stage('Deploy'){
 		try {
+			sh "docker build -t ${dockerImageName} ."
 			sh "docker run -itd --name ${dockerContainerName} -p 80 ${dockerImageName}"
 		} catch (err) {
 			echo err.getMessage()
