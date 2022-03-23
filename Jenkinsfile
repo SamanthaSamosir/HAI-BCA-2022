@@ -16,10 +16,15 @@ node{
 			throw err
 		}
     	}
+	options{
+		timeout(time:2, unit: "Minutes")
+	}
   
 	stage('Build Docker Image'){
 		sh "docker build -t ${dockerImageName} ."    
 	}
+	options{
+		timeout(time:2, unit: "Minutes")
   
 	stage('Run Container'){
 		try {
@@ -37,6 +42,8 @@ node{
 			([string(credentialsId: 'telegramToken', variable: 'TOKEN'),
 			string(credentialsId: 'telegramChatId', variable: 'CHAT_ID')])) {
 				sh 'curl -s -X POST https://api.telegram.org/bot${TOKEN}/sendMessage -d "chat_id=${CHAT_ID}"  -d text="[✅] Build successfully 😊"'
-			} 
+			}
+		options{
+		timeout(time:2, unit: "Minutes")
 	}
 }
