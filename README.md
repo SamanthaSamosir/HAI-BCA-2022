@@ -3,5 +3,5 @@
 - Website dibangun dengan bahasa pemrograman HTML, CSS, dan JavaScript
 
 ## CI/CD Pipeline
-- Jenkinsfile digunakan sebagai pipeline untuk trigger Jenkins.
+- Jenkinsfile berisi script untuk menjalankan pipeline.
 - Dockerfile
