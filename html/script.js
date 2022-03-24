@@ -3,8 +3,6 @@ var app = new function() {
   
     this.tasks = [];
   
-    
-    
     this.FetchAll = function() {
       var data = '';
   
